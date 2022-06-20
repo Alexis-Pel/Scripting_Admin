@@ -2,7 +2,7 @@ def binary_list_to_string(binary_list: [str]):
     """
     Concatenate binary list to one string
     :param binary_list: [str]: list of 8-bits
-    :return:
+    :return: string: str : list concatenated of binary
     """
     string: str = ""
     for binary in binary_list:
