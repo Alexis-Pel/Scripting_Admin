@@ -1,3 +1,12 @@
+def print_base64_string(base64_string: str):
+    """
+    Print base64_string
+    :param: str: base64_string
+    :return: base64_string
+    """
+    return print(base64_string)
+
+  
 def concatenate_all_characters_in_array_base64(array_of_base64_character: [str]):
     """
     concatenate all characters in a array of base64 character
