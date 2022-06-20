@@ -104,3 +104,15 @@ def binary_to_binary_octal(list_utf: [str]):
         list_utf[indice] = number
     return list_utf
 
+
+def binary_to_decimal_base64(list_base64: [str]):
+    """
+    Transform the binary numbers to decimal numbers
+    :param list_base64:
+    :return: list_base64 transformed to decimal numbers
+    """
+
+    for indice, number in enumerate(list_base64):
+        list_base64[indice] = int(number, 2)
+    return list_base64
+
