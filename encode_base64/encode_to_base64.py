@@ -1,3 +1,15 @@
+def binary_list_to_string(binary_list: [str]):
+    """
+    Concatenate binary list to one string
+    :param binary_list: [str]: list of 8-bits
+    :return:
+    """
+    string = ""
+    for binary in binary_list:
+        string += binary
+    return string
+
+
 def string_to_decimal(string_list: [str]):
     """
     Convert ASCII string list to decimal
