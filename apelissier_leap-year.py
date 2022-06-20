@@ -1,3 +1,6 @@
+import sys
+
+
 def leap_year():
     """
     Function that get a user input, if it's a year, it print if it's a leap year or not
@@ -9,6 +12,7 @@ def leap_year():
         if user_input.isdigit():
             print(is_leap_year(int(user_input)))
         elif user_input == "x":
+            print("Exiting Program")
             break
         else:
             print("Incorrect Input")
@@ -23,4 +27,6 @@ def is_leap_year(year: int):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
-leap_year()
+if __name__ == "__main__":
+    leap_year()
+    sys.exit(0)
