@@ -4,13 +4,22 @@ def user_input():
         :param: None
         :return: user_string
     """
-    user_string: str = input("Put your character")
+    user_string: str = input("Put your character\n")
 
     if not user_string.isascii():
         print("Character not supported, change it !")
         user_input()
 
     return user_string
+
+
+def list_user_input(user_string):
+    """
+    Function that transforms the character string into a list by character.
+    :param: user_input
+    :return:list_user_input
+    """
+    return list(user_string)
 
 
 def __base64_string_completion(base64_string: str):
@@ -25,7 +34,6 @@ def __base64_string_completion(base64_string: str):
 
 
 def decimal_to_binary(list_utf: [int]):
-
     """
     Transform the numbers on a list to their binary value
     :param list_utf:
@@ -35,4 +43,3 @@ def decimal_to_binary(list_utf: [int]):
     for indice, number in enumerate(list_utf):
         list_utf[indice] = bin(number).replace("0b", "")
     return list_utf
-
