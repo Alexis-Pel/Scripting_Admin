@@ -1,6 +1,4 @@
-# Transform the numbers on a list to their binary value
-
-def decimal_to_binary(list_utf: []):
+def decimal_to_binary(list_utf: [int]):
 
     """
     Transform the numbers on a list to their binary value
