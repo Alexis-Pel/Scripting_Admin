@@ -13,7 +13,7 @@ def user_input():
     return user_string
 
 
-def list_user_input(user_string):
+def list_user_input(user_string: str):
     """
     Function that transforms the character string into a list by character.
     :param: user_input
