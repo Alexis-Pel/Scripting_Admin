@@ -1,3 +1,12 @@
+def print_octet_charactere(octet_charactere: [str]):
+    """
+    Print octet charactere
+    :param octet charactere
+    :return: octet_charactere
+    """
+    return print(octet_charactere)
+
+
 def string_to_decimal(string_list: [str]):
     """
     Convert ASCII string list to decimal
