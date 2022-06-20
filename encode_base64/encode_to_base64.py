@@ -1,3 +1,16 @@
+def string_to_decimal(string_list: [str]):
+    """
+    Convert ASCII string list to decimal
+    :param string_list: [str] : ASCII list
+    :return: decimal_list: [int]: list of ASCII decimal corresponding to string_list
+    """
+    decimal_list: [int] = []
+    for character in string_list:
+        decimal_list.append(ord(character))
+
+    return decimal_list
+
+
 def user_input():
     """
         Function that retrieves a character string from a user.
