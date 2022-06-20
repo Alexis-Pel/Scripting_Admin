@@ -25,7 +25,6 @@ def __base64_string_completion(base64_string: str):
 
 
 def decimal_to_binary(list_utf: [int]):
-
     """
     Transform the numbers on a list to their binary value
     :param list_utf:
@@ -36,8 +35,8 @@ def decimal_to_binary(list_utf: [int]):
         list_utf[indice] = bin(number).replace("0b", "")
     return list_utf
 
-  
- def separate_binary_string_grouped_by_6_blocks(binary: str):
+
+def separate_binary_string_grouped_by_6_blocks(binary: str):
     """
     transforms a string (binary) into a group of 6 bytes
     :param binary: str
@@ -52,7 +51,7 @@ def decimal_to_binary(list_utf: [int]):
 
     # ---condition for inserting zeros to have a string modulo 6---#
     if modulo_of_length_binary != 0:
-        for i in range(6-modulo_of_length_binary):
+        for i in range(6 - modulo_of_length_binary):
             binary += "0"
 
     # ---loop for grouped in 6 bytes--- #
@@ -68,4 +67,3 @@ def decimal_to_binary(list_utf: [int]):
         count += 1
 
     return array_of_grouped_octets
-
