@@ -6,7 +6,7 @@ def print_base64_string(base64_string: str):
     """
     return print(base64_string)
 
-  
+
 def concatenate_all_characters_in_array_base64(array_of_base64_character: [str]):
     """
     concatenate all characters in a array of base64 character
@@ -37,6 +37,7 @@ def transforms_all_decimals_to_base64_characters(array_of_decimal_character: [st
         array_of_base64_character.append(array_base64_model[int(i)])
 
     return array_of_base64_character
+
 
 def binary_list_to_string(binary_list: [str]):
     """
@@ -167,4 +168,3 @@ def binary_to_decimal_base64(list_base64: [str]):
     for indice, number in enumerate(list_base64):
         list_base64[indice] = int(number, 2)
     return list_base64
-
