@@ -1,3 +1,15 @@
+def concatenate_all_characters_in_array_base64(array_of_base64_character: [str]):
+    """
+    concatenate all characters in a array of base64 character
+    :param array_of_base64_character: [str]
+    :return: base64_string: str
+    """
+    base64_string: str = ""
+    for i in array_of_base64_character:
+        base64_string += i
+    return base64_string
+
+
 def transforms_all_decimals_to_base64_characters(array_of_decimal_character: [str]):
     """
     transforms
