@@ -4,7 +4,7 @@ def binary_list_to_string(binary_list: [str]):
     :param binary_list: [str]: list of 8-bits
     :return:
     """
-    string = ""
+    string: str = ""
     for binary in binary_list:
         string += binary
     return string
