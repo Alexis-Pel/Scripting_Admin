@@ -27,10 +27,24 @@ def decimal_to_binary(list_utf: [int]):
     """
     Transform the numbers on a list to their binary value
     :param list_utf:
-    :return: list_utf transformés en nombres binaires
+    :return: list_utf transformed to binary numbers:
     """
 
     for indice, number in enumerate(list_utf):
         list_utf[indice] = bin(number).replace("0b", "")
+    return list_utf
+
+
+def binary_to_binary_octal(list_utf: [str]):
+    """
+    Transform the binary numbers to some octal binary numbers
+    :param list_utf:
+    :return: list_utf transformed to octal binary numbers
+    """
+
+    for indice, number in enumerate(list_utf):
+        while len(number) % 8 != 0:
+            number = "0" + number
+        list_utf[indice] = number
     return list_utf
 
