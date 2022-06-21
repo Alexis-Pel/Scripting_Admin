@@ -1,16 +1,14 @@
-def bissextile():
-    """
-        Function that get a user input, if it's a year, it print if it's a leap year or not
-        :param: None
-        :return:
-        """
-    while True:
-        annee = int(input("Choisissez une année "))
-        if annee != "q":
-            if (annee % 4 == 0 and annee % 100 != 0 or annee % 400 == 0):
-                print("L'année est une année bissextile!")
-            else:
-                print("L'année n'est pas une année bissextile!")
-        else:
-            break
-bissextile()
+import argparse
+import logging
+
+import tristan_bissextile
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-year', help='année à tester', type=int)
+args = parser.parse_args()
+
+year = args.year
+if tristan_bissextile.bissextile(year):
+    logging.warning("L'année est une année bissextile!")
+else:
+    logging.warning("L'année n'est pas une année bissextile!")
