@@ -1,11 +1,14 @@
 import argparse
 import logging
+import os
 import sys
+import time
 from typing import Any
 
 import cpu_metrics as cpu
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, filename=f"{os.getcwd()}/metrics/metrics.log", filemode='w',
+                    format='%(message)s')
 parser = argparse.ArgumentParser()
 parser.add_argument('-i',
                     dest='seconds',
@@ -21,11 +24,11 @@ def get_all_metrics(interval: int):
     Get All the metrics from the components
     :return: dictionary: all_metrics
     """
-    all_metrics = {}
+    all_metrics = {'cpu_metrics': cpu.get_cpu_all()}
 
-    cpu_metrics: {str: Any} = cpu.get_cpu_all()
-    all_metrics['cpu_metrics'] = cpu_metrics
-    print(all_metrics, interval)
+    logging.info(all_metrics)
+    time.sleep(interval)
+    get_all_metrics(interval)
 
 
 if __name__ == "__main__":
@@ -34,4 +37,5 @@ if __name__ == "__main__":
     except AttributeError:
         logging.critical(" Please use argument -i [seconds]")
         sys.exit(0)
+
     get_all_metrics(seconds)
