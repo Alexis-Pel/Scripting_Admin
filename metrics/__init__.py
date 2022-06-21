@@ -3,7 +3,10 @@ import logging
 import os
 import sys
 import time
-from typing import Any
+
+import psutil
+
+import database
 
 import cpu_metrics as cpu
 
@@ -17,6 +20,7 @@ parser.add_argument('-i',
                     )
 
 args = parser.parse_args()
+db = database.database()
 
 
 def get_all_metrics(interval: int):
@@ -24,11 +28,20 @@ def get_all_metrics(interval: int):
     Get All the metrics from the components
     :return: dictionary: all_metrics
     """
-    all_metrics = {'cpu_metrics': cpu.get_cpu_all()}
+    all_metrics = {'cpu': cpu.get_cpu_all()}
 
     logging.info(all_metrics)
     time.sleep(interval)
+    send_metrics(all_metrics)
+    time.sleep(interval)
     get_all_metrics(interval)
+
+
+def send_metrics(metrics):
+    for component in metrics:
+        for key in metrics[component]:
+            db.set_point(field_name=key, value=metrics[component][key], point_name=component)
+            db.send_metric()
 
 
 if __name__ == "__main__":
