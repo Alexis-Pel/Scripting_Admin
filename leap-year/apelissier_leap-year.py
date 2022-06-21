@@ -4,8 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 parser = argparse.ArgumentParser()
-parser.add_argument('-year',
-                    dest='year',
+parser.add_argument('year',
                     help='Year to test',
                     type=str,
                     nargs='+')
