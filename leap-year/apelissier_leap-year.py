@@ -1,4 +1,15 @@
 import sys
+import argparse
+import logging
+
+logging.basicConfig(level=logging.INFO)
+parser = argparse.ArgumentParser()
+parser.add_argument('-year',
+                    dest='year',
+                    help='Year to test',
+                    type=str,
+                    nargs='+')
+args = parser.parse_args()
 
 
 def leap_year():
@@ -7,16 +18,13 @@ def leap_year():
     :param: None
     :return:
     """
-    user_input: str = input("Please enter a year or [x] for exit : ")
-
-    if user_input.isdigit():
-        print(is_leap_year(int(user_input)))
-        leap_year()
-    elif user_input.upper() == "X":
-        print("Exiting Program")
-    else:
-        print("Incorrect Input")
-        leap_year()
+    user_input_tab: str = args.year
+    for user_input in user_input_tab:
+        if user_input.isdigit():
+            logging.info(f"\n{user_input} is a leap year") if is_leap_year(int(user_input)) else logging.info(
+                f"\n{user_input} is not a leap year")
+        else:
+            logging.warning("Incorrect Input")
     return
 
 
