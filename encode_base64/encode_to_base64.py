@@ -1,10 +1,24 @@
+import argparse
+import logging
+import sys
+
+logging.basicConfig(level=logging.INFO)
+parser = argparse.ArgumentParser()
+parser.add_argument('-string',
+                    dest='string',
+                    help='String to encode to Base64',
+                    type=str
+                    )
+args = parser.parse_args()
+
+
 def print_base64_string(base64_string: str):
     """
     Print base64_string
     :param: str: base64_string
     :return: base64_string
     """
-    return print(base64_string)
+    return logging.info(base64_string)
 
 
 def concatenate_all_characters_in_array_base64(array_of_base64_character: [str]):
@@ -70,10 +84,10 @@ def user_input():
         :param: None
         :return: user_string
     """
-    user_string: str = input("Put your character\n")
+    user_string: str = args.string
 
     if not user_string.isascii():
-        print("Character not supported, change it !")
+        logging.warning("Character not supported, change it !")
         user_input()
 
     return user_string
@@ -168,3 +182,11 @@ def binary_to_decimal_base64(list_base64: [str]):
     for indice, number in enumerate(list_base64):
         list_base64[indice] = int(number, 2)
     return list_base64
+
+
+if __name__ == "__main__":
+    print_base64_string(__base64_string_completion(concatenate_all_characters_in_array_base64(
+            transforms_all_decimals_to_base64_characters(binary_to_decimal_base64(
+                separate_binary_string_grouped_by_6_blocks(binary_list_to_string(
+                    binary_to_binary_octal(decimal_to_binary(string_to_decimal(user_input()))))))))))
+    sys.exit(0)
