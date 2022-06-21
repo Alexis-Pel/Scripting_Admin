@@ -63,6 +63,6 @@ def get_cpu_all():
     get all metrics
     :return: dictionary: all metrics
     """
-    return {"cpu_time": get_cpu_times(), "cpu_percent": get_cpu_percent(),
-            "cpu_time_percent": get_cpu_times_percent(), "cpu_count": get_cpu_count(),
-            "cpu_stats": get_cpu_stats(), "cpu_load_avg": get_cpu_load_avg()}
+    return {"time": get_cpu_times(), "percent": get_cpu_percent(),
+            "time_percent": get_cpu_times_percent(), "count": get_cpu_count(),
+            "stats": get_cpu_stats(), "load_avg": get_cpu_load_avg()}
