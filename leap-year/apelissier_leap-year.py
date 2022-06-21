@@ -7,15 +7,16 @@ def leap_year():
     :param: None
     :return:
     """
-    while True:
-        user_input: str = input("Please enter a year or [x] for exit : ")
-        if user_input.isdigit():
-            print(is_leap_year(int(user_input)))
-        elif user_input == "x":
-            print("Exiting Program")
-            break
-        else:
-            print("Incorrect Input")
+    user_input: str = input("Please enter a year or [x] for exit : ")
+
+    if user_input.isdigit():
+        print(is_leap_year(int(user_input)))
+        leap_year()
+    elif user_input.upper() == "X":
+        print("Exiting Program")
+    else:
+        print("Incorrect Input")
+        leap_year()
     return
 
 
