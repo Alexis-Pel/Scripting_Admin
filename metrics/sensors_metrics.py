@@ -18,19 +18,19 @@ def get_sensors_fans():
 
     return psutil.sensors_fans()
 
+
 def get_sensors_battery():
     """
     get battery status information
     :return: Return battery status information as a named tuple
     """
 
-    return psutil.sensors_battery()
+    return psutil.sensors_battery()._asdict()
+
 
 def get_sensors_all():
     """
     get all metrics
     :return: dictionary: all metrics
     """
-    return {"sensors_temperatures": get_sensors_temperatures(),
-            "sensors_fans": get_sensors_fans(),
-            "sensors_battery": get_sensors_battery()}
+    return {"sensors_battery": get_sensors_battery()}

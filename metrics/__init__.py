@@ -8,6 +8,8 @@ import database
 import cpu_metrics as cpu
 import memory_metrics as memory
 import disk_metrics as disk
+import network_metrics as network
+import sensors_metrics as sensors
 
 logging.basicConfig(level=logging.INFO, filename=f"{os.getcwd()}/metrics/metrics.log", filemode='w',
                     format='%(message)s')
@@ -27,7 +29,8 @@ def get_all_metrics(interval: int):
     Get All the metrics from the components
     :return: dictionary: all_metrics
     """
-    all_metrics = {'cpu': cpu.get_cpu_all(), 'memory': memory.get_memory_all(), 'disk': disk.get_all_metrics()}
+    all_metrics = {'cpu': cpu.get_cpu_all(), 'memory': memory.get_memory_all(), 'disk': disk.get_all_metrics(),
+                   'sensors': sensors.get_sensors_all()}
     send_metrics(all_metrics)
     time.sleep(interval)
     get_all_metrics(interval)
@@ -38,9 +41,10 @@ def send_metrics(metrics):
         for key in metrics[component]:
             if type(metrics[component][key]) == dict:
                 for tag in metrics[component][key]:
-                    db.set_point(field_name=key, value=metrics[component][key][tag], point_name=component,
-                                 tag_name="details", tag_value=tag)
-                    db.send_metric()
+                    if type(metrics[component][key][tag]) == int or type(metrics[component][key][tag]) == float:
+                        db.set_point(field_name=key, value=metrics[component][key][tag], point_name=component,
+                                     tag_name="details", tag_value=tag)
+                        db.send_metric()
             else:
                 db.set_point(field_name=key, value=metrics[component][key], point_name=component)
                 db.send_metric()
