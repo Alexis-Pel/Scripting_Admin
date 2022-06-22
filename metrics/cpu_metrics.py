@@ -66,3 +66,4 @@ def get_cpu_all():
     return {"cpu_time": get_cpu_times(), "percent": get_cpu_percent(),
             "time_percent": get_cpu_times_percent(), "count": get_cpu_count(),
             "stats": get_cpu_stats(), "load_avg": get_cpu_load_avg()}
+
