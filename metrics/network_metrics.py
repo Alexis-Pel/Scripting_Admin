@@ -34,3 +34,12 @@ def get_net_if_stats():
     :return: 
     """
     return psutil.net_if_stats()
+
+
+def get_all_network_metrics():
+    """
+    get all metrics of network
+    :return: dictionnary : all metrics
+    """
+    return {"io_counters": get_net_io_counters(), "connections": get_net_connections(),
+            "if_stats": get_net_if_stats(), "if addrs": get_net_if_addrs()}
