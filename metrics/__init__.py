@@ -43,15 +43,18 @@ def get_all_metrics(interval: int):
 def send_metrics(metrics):
     for component in metrics:
         for key in metrics[component]:
-            if type(metrics[component][key]) == dict:
-                for tag in metrics[component][key]:
-                    if type(metrics[component][key][tag]) == int or type(metrics[component][key][tag]) == float:
-                        db.set_point(field_name=key, value=metrics[component][key][tag], point_name=component,
-                                     tag_name="details", tag_value=tag)
-                        db.send_metric()
-            else:
-                db.set_point(field_name=key, value=metrics[component][key], point_name=component)
-                db.send_metric()
+            try:
+                if type(metrics[component][key]) == dict:
+                    for tag in metrics[component][key]:
+                        if type(metrics[component][key][tag]) == int or type(metrics[component][key][tag]) == float:
+                            db.set_point(field_name=key, value=metrics[component][key][tag], point_name=component,
+                                         tag_name="details", tag_value=tag)
+                            db.send_metric()
+                else:
+                    db.set_point(field_name=key, value=metrics[component][key], point_name=component)
+                    db.send_metric()
+            except TypeError as e:
+                logging.error(e)
 
 
 if __name__ == "__main__":

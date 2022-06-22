@@ -1,14 +1,14 @@
 import psutil
 
 
-def get_net_io_counters(per_nic : bool = False, no_wrap : bool = True):
+def get_net_io_counters(per_nic: bool = False, no_wrap: bool = True):
     """
     Return system-wide network I/O statistics as a named tuple including differents attributes
     :param per_nic:
     :param no_wrap:
     :return: tuple including different attributes
     """
-    return psutil.net_io_counters(pernic=per_nic, nowrap=no_wrap)
+    return psutil.net_io_counters(pernic=per_nic, nowrap=no_wrap)._asdict()
 
 
 def get_net_connections(kind: str = "inet"):
@@ -25,7 +25,7 @@ def get_net_if_addrs():
     Return the addresses associated to each NIC installed on the system
     :return: list of named tuples
     """
-    return psutil.net_if_addrs()
+    return psutil.net_if_addrs()['en0'][0]
 
 
 def get_net_if_stats():
@@ -33,7 +33,7 @@ def get_net_if_stats():
     Return information about each NIC installed on the system
     :return: 
     """
-    return psutil.net_if_stats()
+    return psutil.net_if_stats()['en0']._asdict()  # mac ?
 
 
 def get_all_network_metrics():
@@ -41,5 +41,5 @@ def get_all_network_metrics():
     get all metrics of network
     :return: dictionnary : all metrics
     """
-    return {"io_counters": get_net_io_counters(), "connections": get_net_connections(),
-            "if_stats": get_net_if_stats(), "if addrs": get_net_if_addrs()}
+    return {"io_counters": get_net_io_counters(),
+            "if_stats": get_net_if_stats()}
