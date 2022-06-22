@@ -46,7 +46,7 @@ def send_metrics(metrics):
                                          tag_name="details", tag_value=tag)
                             db.send_metric()
                 else:
-                    db.set_point(field_name=key, value=metrics[component][key], point_name=component, tag_name="system", tag_value=)
+                    db.set_point(field_name=key, value=metrics[component][key], point_name=component)
                     db.send_metric()
             except TypeError as e:
                 logging.error(e)
