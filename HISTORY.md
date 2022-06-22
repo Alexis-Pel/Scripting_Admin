@@ -1,6 +1,15 @@
 # History
 
 ---
+### 0.3.1 / 2022-06-22
+- update History.md
+
+### 0.3.0 / 2022-06-22
+- add disk_metrics
+- add memory_metrics
+- link to init.py
+- Possibility in init to push tuple in tags
+
 ### 0.2.1 / 2022-06-21
 - Update HISTORY.md
 
