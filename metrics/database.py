@@ -15,12 +15,18 @@ class database:
     query_api = client.query_api()
     point = None
 
-    def set_point(self, point_name: str, field_name: str, value: float):
-        self.point = (
-            Point(point_name)
-            .field(field_name, float(value))
-        )
+    def set_point(self, point_name: str, field_name: str, value: float, tag_name: str = None, tag_value: str = None):
+        if tag_name and tag_value:
+            self.point = (
+                Point(point_name)
+                .tag(tag_name, tag_value)
+                .field(field_name, float(value))
+            )
+        else:
+            self.point = (
+                Point(point_name)
+                .field(field_name, float(value))
+            )
 
     def send_metric(self):
         self.write_api.write(bucket=self.BUCKET, org=self.ORG, record=self.point)
-

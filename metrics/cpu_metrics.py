@@ -10,7 +10,7 @@ def get_cpu_times(per_cpu: bool = False):
     :param per_cpu: function per cpu or not
     :return: system CPU times as a named tuple.
     """
-    return psutil.cpu_times(percpu=per_cpu).user
+    return psutil.cpu_times(percpu=per_cpu)._asdict()
 
 
 def get_cpu_percent(per_cpu: bool = False, interval: int = 1):
@@ -30,7 +30,7 @@ def get_cpu_times_percent(per_cpu: bool = False, interval: int = 1):
     :param interval: time before result
     :return: system cpu time percent utilisation
     """
-    return psutil.cpu_times_percent(percpu=per_cpu, interval=interval).user
+    return psutil.cpu_times_percent(percpu=per_cpu, interval=interval)._asdict()
 
 
 def get_cpu_count(logical: bool = False):
@@ -47,7 +47,7 @@ def get_cpu_stats():
     get cpu different stats
     :return: cpu stats
     """
-    return psutil.cpu_stats().ctx_switches
+    return psutil.cpu_stats()._asdict()
 
 
 def get_cpu_load_avg():
