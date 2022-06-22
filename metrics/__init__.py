@@ -46,6 +46,8 @@ def send_metrics(metrics):
                 db.send_metric()
 
 
+
+
 if __name__ == "__main__":
     try:
         seconds = int(args.seconds) if args.seconds.isdigit() else logging.error("Please use digit") and sys.exit(0)

@@ -10,6 +10,7 @@ def get_virtual_memory():
     return psutil.virtual_memory()._asdict()
 
 
+
 def get_swap_memory():
     """
     get swap memory
@@ -17,6 +18,7 @@ def get_swap_memory():
     """
 
     return psutil.swap_memory()._asdict()
+
 
 
 def get_memory_all():
