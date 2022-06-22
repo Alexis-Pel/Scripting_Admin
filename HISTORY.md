@@ -1,6 +1,19 @@
 # History
 
 ---
+### 0.2.1 / 2022-06-21
+- Update HISTORY.md
+
+### 0.2.0 / 2022-06-21
+
+- Add database class file : to write into the database
+- Add init file : principal script 
+- Add cpu_metrics : all functions for cpu
+
+### 0.1.0 / 2022-06-21
+
+- Add logging
+- Add args
 
 ### 0.0.7 / 2022-06-21
 
