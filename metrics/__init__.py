@@ -3,9 +3,9 @@ import logging
 import os
 import sys
 import time
-from metrics.config import database
+from config import database
 
-from metrics.scripts_metrics import sensors_metrics as sensors, memory_metrics as memory, cpu_metrics as cpu, \
+from scripts_metrics import sensors_metrics as sensors, memory_metrics as memory, cpu_metrics as cpu, \
     disk_metrics as disk, network_metrics as network, others_metrics as others
 
 logging.basicConfig(level=logging.INFO, filename=f"{os.getcwd()}/metrics/metrics.log", filemode='w',
@@ -29,7 +29,7 @@ def get_all_metrics(interval: int):
     all_metrics = {'cpu': cpu.get_cpu_all(), 'memory': memory.get_memory_all(), 'disk': disk.get_all_metrics(),
                    'network': network.get_all_network_metrics(), 'sensors': sensors.get_sensors_all(),
                    'others': others.get_all_others_metrics()}
-    
+
     send_metrics(all_metrics)
     time.sleep(interval)
     get_all_metrics(interval)
@@ -46,7 +46,7 @@ def send_metrics(metrics):
                                          tag_name="details", tag_value=tag)
                             db.send_metric()
                 else:
-                    db.set_point(field_name=key, value=metrics[component][key], point_name=component)
+                    db.set_point(field_name=key, value=metrics[component][key], point_name=component, tag_name="system", tag_value=)
                     db.send_metric()
             except TypeError as e:
                 logging.error(e)
