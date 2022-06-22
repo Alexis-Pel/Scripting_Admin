@@ -22,7 +22,7 @@ def get_memory_all():
     get all metrics
     :return: dictionary: all metrics
     """
-    return {"memory_all": get_virtual_memory(), "swap_memory": get_swap_memory}
+    return {"memory_all": get_virtual_memory(), "swap_memory": get_swap_memory()}
 
 
 
