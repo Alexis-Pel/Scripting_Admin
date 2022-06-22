@@ -7,7 +7,8 @@ def get_virtual_memory():
     :return: return statistics about system memory usage as a named tuple
     """
 
-    return psutil.virtual_memory()
+    return psutil.virtual_memory()._asdict()
+
 
 def get_swap_memory():
     """
@@ -15,7 +16,8 @@ def get_swap_memory():
     :return: Return system swap memory statistics as a named tuple
     """
 
-    return psutil.swap_memory()
+    return psutil.swap_memory()._asdict()
+
 
 def get_memory_all():
     """
@@ -23,7 +25,3 @@ def get_memory_all():
     :return: dictionary: all metrics
     """
     return {"memory_all": get_virtual_memory(), "swap_memory": get_swap_memory()}
-
-
-
-
