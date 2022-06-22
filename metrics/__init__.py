@@ -7,6 +7,7 @@ import database
 
 import cpu_metrics as cpu
 import memory_metrics as memory
+import disk_metrics as disk
 
 logging.basicConfig(level=logging.INFO, filename=f"{os.getcwd()}/metrics/metrics.log", filemode='w',
                     format='%(message)s')
@@ -26,7 +27,7 @@ def get_all_metrics(interval: int):
     Get All the metrics from the components
     :return: dictionary: all_metrics
     """
-    all_metrics = {'cpu': cpu.get_cpu_all(), 'memory': memory.get_memory_all()}
+    all_metrics = {'cpu': cpu.get_cpu_all(), 'memory': memory.get_memory_all(), 'disk': disk.get_all_metrics()}
     send_metrics(all_metrics)
     time.sleep(interval)
     get_all_metrics(interval)
