@@ -12,6 +12,7 @@ import network_metrics as network
 import sensors_metrics as sensors
 import others_metrics as others
 
+
 logging.basicConfig(level=logging.INFO, filename=f"{os.getcwd()}/metrics/metrics.log", filemode='w',
                     format='%(message)s')
 parser = argparse.ArgumentParser()
@@ -33,6 +34,7 @@ def get_all_metrics(interval: int):
     all_metrics = {'cpu': cpu.get_cpu_all(), 'memory': memory.get_memory_all(), 'disk': disk.get_all_metrics(),
                    'network': network.get_all_network_metrics(), 'sensors': sensors.get_sensors_all(),
                    'others': others.get_all_others_metrics()}
+    
     send_metrics(all_metrics)
     time.sleep(interval)
     get_all_metrics(interval)
@@ -43,9 +45,10 @@ def send_metrics(metrics):
         for key in metrics[component]:
             if type(metrics[component][key]) == dict:
                 for tag in metrics[component][key]:
-                    db.set_point(field_name=key, value=metrics[component][key][tag], point_name=component,
-                                 tag_name="details", tag_value=tag)
-                    db.send_metric()
+                    if type(metrics[component][key][tag]) == int or type(metrics[component][key][tag]) == float:
+                        db.set_point(field_name=key, value=metrics[component][key][tag], point_name=component,
+                                     tag_name="details", tag_value=tag)
+                        db.send_metric()
             else:
                 db.set_point(field_name=key, value=metrics[component][key], point_name=component)
                 db.send_metric()
