@@ -8,7 +8,7 @@ class database:
     TOKEN = os.environ.get("INFLUXDB_TOKEN")
     ORG = "scripting_admin_groupe5"
     URL = "https://europe-west1-1.gcp.cloud2.influxdata.com"
-    BUCKET = f"metrics_{socket.gethostname()}"
+    BUCKET = "monitoring"
 
     client = InfluxDBClient(url=URL, token=TOKEN, org=ORG)
     write_api = client.write_api(write_options=SYNCHRONOUS)
@@ -20,11 +20,13 @@ class database:
             self.point = (
                 Point(point_name)
                 .tag(tag_name, tag_value)
+                .tag("system", socket.gethostname())
                 .field(field_name, float(value))
             )
         else:
             self.point = (
                 Point(point_name)
+                .tag("system", socket.gethostname())
                 .field(field_name, float(value))
             )
 
