@@ -3,15 +3,10 @@ import logging
 import os
 import sys
 import time
-import database
+from config import database
 
-import cpu_metrics as cpu
-import memory_metrics as memory
-import disk_metrics as disk
-import network_metrics as network
-import sensors_metrics as sensors
-import others_metrics as others
-
+from scripts_metrics import sensors_metrics as sensors, memory_metrics as memory, cpu_metrics as cpu, \
+    disk_metrics as disk, network_metrics as network, others_metrics as others
 
 logging.basicConfig(level=logging.INFO, filename=f"{os.getcwd()}/metrics/metrics.log", filemode='w',
                     format='%(message)s')
@@ -34,7 +29,7 @@ def get_all_metrics(interval: int):
     all_metrics = {'cpu': cpu.get_cpu_all(), 'memory': memory.get_memory_all(), 'disk': disk.get_all_metrics(),
                    'network': network.get_all_network_metrics(), 'sensors': sensors.get_sensors_all(),
                    'others': others.get_all_others_metrics()}
-    
+
     send_metrics(all_metrics)
     time.sleep(interval)
     get_all_metrics(interval)
