@@ -1,6 +1,5 @@
 import argparse
 import logging
-import os
 import sys
 import time
 from scripts_metrics.config import database
@@ -8,7 +7,7 @@ from scripts_metrics.config import database
 from scripts_metrics import sensors_metrics as sensors, memory_metrics as memory, cpu_metrics as cpu, \
     disk_metrics as disk, network_metrics as network, others_metrics as others
 
-logging.basicConfig(level=logging.INFO, filename=f"{os.getcwd()}/metrics/metrics.log", filemode='w',
+logging.basicConfig(level=logging.INFO, filename="./metrics.log", filemode='w',
                     format='%(message)s')
 parser = argparse.ArgumentParser()
 parser.add_argument('-i',
