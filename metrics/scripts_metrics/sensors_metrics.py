@@ -30,7 +30,7 @@ def get_sensors_battery():
     return psutil.sensors_battery()._asdict()
 
 
-def get_sensors_all():
+def get_sensors_all(fahrenheit: bool = False):
     """
     get all metrics
     :return: dictionary: all metrics
@@ -40,11 +40,11 @@ def get_sensors_all():
     os = sy.get_my_os()
 
     if os == "FreeBSD":
-        sensors_temperatures = get_sensors_temperatures()
+        sensors_temperatures = get_sensors_temperatures(fahrenheit)
 
     if os == "Linux":
         sensors_fans = get_sensors_fans()
-        sensors_temperatures = get_sensors_temperatures()
+        sensors_temperatures = get_sensors_temperatures(fahrenheit)
 
     return {"sensors_battery": get_sensors_battery(), "sensor_temperature": sensors_temperatures,
             "sensor_fan": sensors_fans}
