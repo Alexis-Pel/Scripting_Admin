@@ -1,6 +1,13 @@
 # History
 
 ---
+### 0.4.0 / 2022-06-23
+- Change config path
+- add os differentiation 
+- update History.md
+- update ReadMe.md
+- VM compatibility
+
 ### 0.3.1 / 2022-06-22
 - update History.md
 
