@@ -1,6 +1,9 @@
 # History
 
 ---
+### 0.4.1 / 2022-06-23
+- fix update History.md
+
 ### 0.4.0 / 2022-06-23
 - Change config path
 - add os differentiation 
