@@ -1,7 +1,9 @@
+import logging
 import os
+import socket
+
 from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
-import socket
 
 
 class database:
@@ -32,3 +34,4 @@ class database:
 
     def send_metric(self):
         self.write_api.write(bucket=self.BUCKET, org=self.ORG, record=self.point)
+        logging.info(f"data sent : {self.point}")

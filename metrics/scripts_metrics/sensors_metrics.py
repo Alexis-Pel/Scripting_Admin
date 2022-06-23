@@ -1,6 +1,5 @@
 import psutil
-
-import config.config_system as sy
+import socket
 
 
 def get_sensors_temperatures(fahrenheit: bool = False):
@@ -37,7 +36,7 @@ def get_sensors_all(fahrenheit: bool = False):
     """
     sensors_temperatures = None
     sensors_fans = None
-    os = sy.get_my_os()
+    os = socket.gethostname()
 
     if os == "FreeBSD":
         sensors_temperatures = get_sensors_temperatures(fahrenheit)

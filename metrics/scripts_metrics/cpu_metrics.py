@@ -1,5 +1,5 @@
 import psutil
-from config import config_system as sy
+from .config import config_system as sy
 
 
 # Not Apple M1 : print(psutil.cpu_freq(percpu=False))

@@ -48,8 +48,8 @@ def send_metrics(metrics):
                 else:
                     db.set_point(field_name=key, value=metrics[component][key], point_name=component)
                     db.send_metric()
-            except TypeError as e:
-                logging.error(e)
+            except TypeError:
+                pass
 
 
 if __name__ == "__main__":
