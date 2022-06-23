@@ -3,7 +3,8 @@ import logging
 import os
 import sys
 import time
-from config import database
+sys.path.insert(0, '..')
+from metrics.config import database
 
 from scripts_metrics import sensors_metrics as sensors, memory_metrics as memory, cpu_metrics as cpu, \
     disk_metrics as disk, network_metrics as network, others_metrics as others

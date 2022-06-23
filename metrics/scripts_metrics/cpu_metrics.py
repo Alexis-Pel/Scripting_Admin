@@ -1,6 +1,5 @@
 import psutil
-import system as sy
-
+from metrics.config import config_system as sy
 # Not Apple M1 : print(psutil.cpu_freq(percpu=False))
 
 
@@ -67,7 +66,7 @@ def get_cpu_load_avg():
 def get_cpu_freq():
     """
     get frequence cpu
-    :param percpu:
+    :param
     :return: psutil.cpu_freq()
     """
     # --- run for linux only --- #
@@ -79,12 +78,10 @@ def get_cpu_all():
     get all metrics
     :return: dictionary: all metrics
     """
-    linux_return = get_cpu_all_linux()
+    freq = None
     if sy.get_my_os() == "Linux":
+        freq = get_cpu_freq()
 
     return {"cpu_time": get_cpu_times(), "percent": get_cpu_percent(),
             "time_percent": get_cpu_times_percent(), "count": get_cpu_count(),
-            "stats": get_cpu_stats(), "load_avg": get_cpu_load_avg()}
-
-
-def get_cpu_all_linux():
+            "stats": get_cpu_stats(), "load_avg": get_cpu_load_avg(), "freq": freq}
