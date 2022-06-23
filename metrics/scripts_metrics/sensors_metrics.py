@@ -1,6 +1,6 @@
 import psutil
 
-import metrics.config.config_system as sy
+import config.config_system as sy
 
 
 def get_sensors_temperatures(fahrenheit: bool = False):
