@@ -1,0 +1,19 @@
+[Unit]
+Description=My test service
+After=multi-user.target
+
+[Service]
+Type=simple
+
+User = kcoudray
+Group = sudo
+Umask = 007
+
+Restart=always
+WorkingDirectory=/home/kcoudray/Scripting/Scripting_Admin/metrics
+Environment="PYTHONPATH=$PYTHONPATH:/home/kcoudray/Scripting/Scripting_Admin/me>
+Environment="INFLUXDB_TOKEN=Vc_tNqQgJ3Wh5Nf3cqeAOzMjQFWGZDfn-jzx3gKFQhX2MrLYkm4>
+ExecStart=/usr/bin/python3 /home/kcoudray/Scripting/Scripting_Admin/metrics/met>
+
+[Install]
+WantedBy=multi-user.target
